@@ -53,7 +53,7 @@ public class PruebaPaP2EcApplication implements CommandLineRunner{
 		System.out.println("Punto 1");
 		Propietario p=new Propietario();
 		p.setApellido("TAPIA");
-		p.setNombre("Dennis");
+		p.setNombre("JAVIER");
 		p.setCedula("123456");
 		this.propietarioService.crearPropietario(p);
 		
