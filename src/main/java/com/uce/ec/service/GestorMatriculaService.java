@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.uce.ec.modelo.Matricula;
@@ -16,6 +17,13 @@ public class GestorMatriculaService implements IGestorMatricula{
 
 	
 	@Autowired
+	@Qualifier("liviano")
+	private IVehiculoService vehiculoServiceL;
+	@Autowired
+	@Qualifier("pesado")
+	private IVehiculoService vehiculoServiceP;
+	@Autowired
+	@Qualifier("general")
 	private IVehiculoService vehiculoService;
 	@Autowired
 	private IPropietarioService propietarioService;
@@ -34,9 +42,9 @@ public class GestorMatriculaService implements IGestorMatricula{
 		BigDecimal precio = vehiculo.getPrecio();
 		
 		if(tipo.equals("L")) {
-			valorMatricula = precio.multiply(new BigDecimal(0.14).setScale(2,RoundingMode.UP));
+			valorMatricula = this.vehiculoServiceL.calcularValor(precio);
 		}else if(tipo.equals("P")) {
-			valorMatricula = precio.multiply(new BigDecimal(0.12).setScale(2,RoundingMode.UP));
+			valorMatricula = this.vehiculoServiceP.calcularValor(precio);
 		}
 		
 		int aux = valorMatricula.intValue();

@@ -3,6 +3,7 @@ package com.uce.ec;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,13 +20,24 @@ public class PruebaPaP2EcApplication implements CommandLineRunner{
 
 	@Autowired
 	private IPropietarioService propietarioService;
+	
 	@Autowired
+	@Qualifier("general")
 	private IVehiculoService vehiculoService;
+	
 	@Autowired
 	private IMatriculaService matriculaService;
+	
 	@Autowired
 	private IGestorMatricula gestorMatricula;
 	
+
+	@Autowired
+	@Qualifier("liviano")
+	private IVehiculoService vehiculoServiceL;
+	@Autowired
+	@Qualifier("pesado")
+	private IVehiculoService vehiculoServiceP;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(PruebaPaP2EcApplication.class, args);
