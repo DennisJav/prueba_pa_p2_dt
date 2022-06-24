@@ -47,7 +47,7 @@ public class GestorMatriculaService implements IGestorMatricula{
 			valorMatricula = this.vehiculoServiceP.calcularValor(precio);
 		}
 		
-		int aux = valorMatricula.intValue();
+		Double aux = valorMatricula.doubleValue();
 		if(aux>2000) {
 			valorMatricula = valorMatricula.divide(new BigDecimal(1.07).setScale(2,RoundingMode.UP));
 		}

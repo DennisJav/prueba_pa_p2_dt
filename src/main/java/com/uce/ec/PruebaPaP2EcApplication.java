@@ -46,7 +46,7 @@ public class PruebaPaP2EcApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Prueba unidad 1");
+		System.out.println("Correccion 1");
 		System.out.println("SISTEMA DE MATRICULA");
 		System.out.println("------------------------");
 		
@@ -68,7 +68,7 @@ public class PruebaPaP2EcApplication implements CommandLineRunner{
 		this.vehiculoService.crearVehiculo(v);
 		
 		System.out.println("Punto 3");
-		v.setModelo("Chevrolet");
+		v.setMarca("Chevrolet");
 		this.vehiculoService.actualizarVehiculo(v);
 		
 		
