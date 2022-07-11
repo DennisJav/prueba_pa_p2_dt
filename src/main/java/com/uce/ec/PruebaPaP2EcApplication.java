@@ -2,6 +2,8 @@ package com.uce.ec;
 
 import java.math.BigDecimal;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +20,8 @@ import com.uce.ec.service.IVehiculoService;
 @SpringBootApplication
 public class PruebaPaP2EcApplication implements CommandLineRunner{
 
+	private static final Logger LOG = LogManager.getLogger( PruebaPaP2EcApplication.class);
+	
 	@Autowired
 	private IPropietarioService propietarioService;
 	
@@ -45,35 +49,37 @@ public class PruebaPaP2EcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Correccion 1");
-		System.out.println("SISTEMA DE MATRICULA");
-		System.out.println("------------------------");
 		
-		System.out.println("Punto 1");
+		
+		// TODO Auto-generated method stub
+		LOG.info("Correccion 1");
+		LOG.info("SISTEMA DE MATRICULA");
+		LOG.info("------------------------");
+		
+		LOG.info("Punto 1");
 		Propietario p=new Propietario();
 		p.setApellido("TAPIA");
 		p.setNombre("JAVIER");
-		p.setCedula("123456");
+		p.setCedula("1234565");
 		this.propietarioService.crearPropietario(p);
 		
-		System.out.println("Punto 2");
+		LOG.info("Punto 2");
 		
 		Vehiculo v=new Vehiculo();
 		v.setMarca("Renault");
 		v.setModelo("Logan");
-		v.setPlaca("POC123");
+		v.setPlaca("POC12345");
 		v.setPrecio(new BigDecimal(6500));
 		v.setTipo("L");
 		this.vehiculoService.crearVehiculo(v);
 		
-		System.out.println("Punto 3");
+		LOG.info("Punto 3");
 		v.setMarca("Chevrolet");
 		this.vehiculoService.actualizarVehiculo(v);
 		
 		
-		System.out.println("Punto 4");
-		this.gestorMatricula.crearMatricula("123456", "POC123");
+		LOG.info("Punto 4");
+		this.gestorMatricula.crearMatricula("1234565", "POC12345");
 		
 		
 	}
