@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Propietario {
 	@Column(name = "prop_cedula")
 	private String cedula;
 	
-	@OneToMany(mappedBy = "propietario",cascade=CascadeType.ALL) 
+	@OneToMany(mappedBy = "propietario",cascade=CascadeType.ALL,fetch = FetchType.EAGER) 
 	private List<Matricula> matriculasPropietario;
 	
 	
